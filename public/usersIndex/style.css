@@ -1,0 +1,89 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the table takes up the full width and adjusts to screen size */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+}
+
+/* Style for the table */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid #dee2e6;
+}
+
+/* Header styling */
+.table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: bold;
+    padding: 12px;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+}
+
+/* Table row styling */
+.table tbody tr {
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Alternating row colors */
+.table tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+}
+
+/* Table cells styling */
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+}
+
+/* Button styling */
+.btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Ensure buttons look good inside the table */
+.table td a.btn {
+    margin-right: 5px;
+}

@@ -1,0 +1,116 @@
+/* Reset body and html to prevent scrolling */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Ensure the main container takes full height and is centered */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f4f4f4; /* Optional background color */
+}
+
+/* Style for the sign-in section */
+.sign-in {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px; /* Add padding if needed */
+    box-sizing: border-box;
+}
+
+/* Ensure the form takes full width but remains within container */
+.signin-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px; /* Limit max width of form */
+    padding: 20px;
+    background: #fff; /* Optional background color */
+    border-radius: 8px; /* Optional border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Style for the form elements */
+.form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Style the submit button */
+.form-submit {
+    width: 100%;
+}
+
+/* Style for social login icons */
+.social-login {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    transition: background-color 0.3s, transform 0.3s;
+    color: #333;
+    text-decoration: none; /* Remove underline */
+}
+
+.social-icon i {
+    font-size: 20px;
+}
+
+.social-icon:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.display-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Additional styles for form labels and inputs */
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.form-group input {
+    padding-left: 40px; /* Space for icons */
+}
+
+.form-group input:focus {
+    border-color: #007bff; /* Highlight color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Optional focus shadow */
+}
