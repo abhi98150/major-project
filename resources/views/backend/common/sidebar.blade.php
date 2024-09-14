@@ -51,8 +51,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
 
-            <a class="collapse-item" href="{{ route('users.index')}}">Produncts</a>
-            <a class="collapse-item" href="">Users</a>
+            <a class="collapse-item" href="">Produncts</a>
+            <a class="collapse-item" href="{{ route('users.index')}}">Users</a>
             <a class="collapse-item" href="">Order</a>
             <a class="collapse-item" href="">Payments</a>
                    </div>
