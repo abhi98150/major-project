@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User; // Ensure correct namespace for User model
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -15,21 +17,18 @@ class UsersController extends Controller
     public function create(){
         return view('users.create');
     }
-//...............................store...........................................//
+
     public function store(Request $request){
         // Validate input data
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:8',
-            'role' => 'required|in:user,seller',
-            'company_name' => 'nullable|string|max:255',
-            'pan_no' => 'nullable|string|max:255',
-            'mobile_number' => 'nullable|string|max:255',
+            'name' => 'required',
+            'username' => 'required|unique:users,username', // Ensure username is required and unique
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            // 'role' => 'required|in:user', // Role must be 'user'
         ]);
-
-        // Prepare common data
+    
+        // User data only
         $data = [
             'name' => $request->input('name'),
             'username' => $request->input('username'),
@@ -55,7 +54,7 @@ class UsersController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User registered successfully!');
     }
-//...................................................delete.............................................//
+
     public function delete($id){
         if (!$id) {
             return redirect()->back();
@@ -69,7 +68,7 @@ class UsersController extends Controller
 
         return redirect()->back()->with('error', 'User not found.');
     }
-//...............................................edit....................................................//
+
     public function edit($id){
         if (!$id) {
             return redirect()->back();
@@ -82,7 +81,7 @@ class UsersController extends Controller
 
         return redirect()->back()->with('error', 'User not found.');
     }
-//.................................................update...................................................//
+
     public function update(Request $request, $id){
         if (!$id) {
             return redirect()->back();
