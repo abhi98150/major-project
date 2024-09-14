@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('frontend.master');
 });
 
+
 // Route::view('/home','frontend.master')->name('home');
 
 
