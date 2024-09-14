@@ -4,120 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User; // Ensure correct namespace for User model
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    public function index(){
-        $users = User::all();
-        return view('users.index', compact('users'));
-   }
-
-    public function create(){
-        return view('users.create');
-    }
-
-    public function store(Request $request){
-        // Validate input data
+    public function register(Request $request)
+    {
+        // Validate user registration inputs
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed|min:8',
-            'role' => 'required|in:user,seller',
-            'company_name' => 'nullable|string|max:255',
-            'pan_no' => 'nullable|string|max:255',
-            'mobile_number' => 'nullable|string|max:255',
+            'name' => 'required',
+            'username' => 'required|unique:users,username', // Ensure username is required and unique
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            // 'role' => 'required|in:user', // Role must be 'user'
         ]);
-
-        // Prepare common data
+    
+        // User data only
         $data = [
-            'name' => $request->input('name'),
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-            'role' => $request->input('role'),
+            'username' => $request->username, // Ensure 'username' is included
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'user', // Set role as 'user' by default
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
+    
+        // Insert user data into the database
+        User::create($data); // Using Eloquent's create method for mass assignment
+    
+        // Redirect to login page with success message
+        // Flash a success message to the session
+        $request->session()->flash('success', 'Account created successfully');
 
-        // Add seller-specific data if the role is 'seller'
-        if ($request->input('role') === 'seller') {
-            $data['company_name'] = $request->input('company_name');
-            $data['pan_no'] = $request->input('pan_no');
-            $data['mobile_number'] = $request->input('mobile_number');
-        } else {
-            // Ensure seller-specific fields are not included if the role is not 'seller'
-            $data['company_name'] = null;
-            $data['pan_no'] = null;
-            $data['mobile_number'] = null;
-        }
-
-        // Insert data into the database
-        User::create($data);
-
-        return redirect()->route('users.index')->with('success', 'User registered successfully!');
-    }
-
-    public function delete($id){
-        if (!$id) {
-            return redirect()->back();
-        }
-
-        $user = User::find($id);
-        if ($user) {
-            $user->delete();
-            return redirect()->back()->with('success', 'User deleted successfully!');
-        }
-
-        return redirect()->back()->with('error', 'User not found.');
-    }
-
-    public function edit($id){
-        if (!$id) {
-            return redirect()->back();
-        }
-
-        $user = User::find($id);
-        if ($user) {
-            return view('users.edit', compact('user'));
-        }
-
-        return redirect()->back()->with('error', 'User not found.');
-    }
-
-    public function update(Request $request, $id){
-        if (!$id) {
-            return redirect()->back();
-        }
-
-        // Validate input data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'password' => 'nullable|confirmed|min:8',
-            'role' => 'required|in:user,seller',
-            'company_name' => 'nullable|string|max:255',
-            'pan_no' => 'nullable|string|max:255',
-            'mobile_number' => 'nullable|string|max:255',
-        ]);
-
-        // Find the user
-        $user = User::find($id);
-        if ($user) {
-            $data = [
-                'name' => $request->input('name'),
-                'username' => $request->input('username'),
-                'email' => $request->input('email'),
-                'password' => $request->has('password') ? bcrypt($request->input('password')) : $user->password,
-                'role' => $request->input('role'),
-                'company_name' => $request->input('company_name'),
-                'pan_no' => $request->input('pan_no'),
-                'mobile_number' => $request->input('mobile_number'),
-            ];
-
-            $user->update($data);
-            return redirect()->route('users.index')->with('success', 'User updated successfully!');
-        }
-
-        return redirect()->back()->with('error', 'User not found.');
+        // Redirect to the login page
+        return redirect()->route('login');
     }
 }

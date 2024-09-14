@@ -10,16 +10,14 @@
 
 
 
-<ul class="navbar-nav bg-gradient-succes  sidebar sidebar-dark accordion" style="background-color:blue;"  id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand py-5 d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon " >
-        
-   
-<p>Olive Store</p>
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">
+    <div class="sidebar-brand-text mx-3">  
         
     </div>
 </a>
@@ -50,18 +48,16 @@
         <span>Components</span>
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-light  py-2 collapse-inner rounded">
+        <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
 
-            <a class="collapse-item" href="{{ route('users.index')}}">Produncts</a>
-            <a class="collapse-item" href="">Users</a>
+            <a class="collapse-item" href="">Produncts</a>
+            <a class="collapse-item" href="{{ route('users.index')}}">Users</a>
             <a class="collapse-item" href="">Order</a>
             <a class="collapse-item" href="">Payments</a>
                    </div>
     </div>
 </li>
-
-
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item">

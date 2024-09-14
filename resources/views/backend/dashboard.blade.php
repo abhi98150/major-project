@@ -1,3 +1,4 @@
+
    
    
    @extends('backend.master')
@@ -7,7 +8,7 @@
 <!-- Begin Page Content -->
 
 <!-- Topbar -->
-
+@include('backend.common.nav')
 <!-- End of Topbar -->
 
 <div class="container-fluid">

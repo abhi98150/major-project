@@ -1,7 +1,7 @@
-<footer class="sticky-footer   ">
+<footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Demo</span>
+                        <span>Copyright &copy;demo</span>
                     </div>
                 </div>
             </footer>
