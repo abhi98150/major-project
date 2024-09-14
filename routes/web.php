@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\UsersController;
 // use App\Http\Controllers\SellerController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/login', function () {
 //     return view('auth.login');
 // })->name('login');
+
+
+Route::get('/test1', [RegisterController::class, 'testMethod']);
 
 // login and register routes
 Route::view('/login', 'customlogin.login2')->name('login');
@@ -75,3 +79,78 @@ Route::post('/users/update/{id}','UsersController@update')->name('users.update')
 //     Route::get('/edit/{id}', [SellersController::class, 'edit'])->name('sellers.edit');
 //     Route::post('/update/{id}', [SellersController::class, 'update'])->name('sellers.update');
 // });
+
+
+
+
+// Sitesettings routes..............................................!!
+Route::get('/backend','SiteSettingController@index')->name('backend.index')->middleware('auth');
+Route::get('/backend/create','SiteSettingController@create')->name('backend.create')->middleware('auth');
+Route::post('/backend/store','SiteSettingController@store')->name('backend.store')->middleware('auth');
+Route::get('/backend/delete/{id}','SiteSettingController@delete')->name('backend.delete')->middleware('auth');
+Route::get('/backend/edit/{id}','SiteSettingController@edit')->name('backend.edit')->middleware('auth');
+Route::post('/backend/update/{id}','SiteSettingController@update')->name('backend.update')->middleware('auth');
+
+
+// for order......................................!!
+Route::get('/orders','OrderController@index')->name('orders.index')->middleware('auth');
+Route::get('/orders/delete/{id}','OrderController@delete')->name('orders.delete')->middleware('auth');
+Route::get('/orders/edit/{id}','OrderController@edit')->name('orders.edit')->middleware('auth');
+Route::post('/orders/update/{id}','OrderController@update')->name('orders.update')->middleware('auth');
+
+
+
+// for Payments......................................!!
+Route::get('/payments','PaymentController@index')->name('payments.index')->middleware('auth');
+Route::get('/payments/delete/{id}','PaymentController@delete')->name('payments.delete')->middleware('auth');
+Route::get('/payments/edit/{id}','PaymentController@edit')->name('payments.edit')->middleware('auth');
+Route::post('/payments/update/{id}','PaymentController@update')->name('payments.update')->middleware('auth');
+
+
+
+
+// for Details......................................!!
+Route::get('/details','DetailsController@index')->name('details.index')->middleware('auth');
+Route::get('/details/delete/{id}','DetailsController@delete')->name('details.delete')->middleware('auth');
+Route::get('/details/edit/{id}','DetailsController@edit')->name('details.edit')->middleware('auth');
+Route::post('/details/update/{id}','DetailsController@update')->name('details.update')->middleware('auth');
+
+
+
+// for wishlists......................................!!
+Route::get('/wishlists','WishlistsController@index')->name('wishlists.index')->middleware('auth');
+Route::get('/wishlists/delete/{id}','WishlistsController@delete')->name('wishlists.delete')->middleware('auth');
+Route::get('/wishlists/edit/{id}','WishlistsController@edit')->name('wishlists.edit')->middleware('auth');
+Route::post('/wishlists/update/{id}','WishlistsController@update')->name('wishlists.update')->middleware('auth');
+
+// for cart......................................!!
+Route::get('/carts','CartsController@index')->name('carts.index')->middleware('auth');
+Route::get('/carts/delete/{id}','CartsController@delete')->name('carts.delete')->middleware('auth');
+Route::get('/carts/edit/{id}','CartsController@edit')->name('carts.edit')->middleware('auth');
+Route::post('/carts/update/{id}','CartsController@update')->name('carts.update')->middleware('auth');
+
+// for cart_details......................................!!
+Route::get('/carts_details','Carts_detailsController@index')->name('carts_details.index')->middleware('auth');
+Route::get('/carts_details/delete/{id}','Carts_detailsController@delete')->name('carts_details.delete')->middleware('auth');
+Route::get('/carts_details/edit/{id}','Carts_detailsController@edit')->name('carts_details.edit')->middleware('auth');
+Route::post('/carts_details/update/{id}','Carts_detailsController@update')->name('carts_details.update')->middleware('auth');
+
+
+// for category..........................!!
+Route::get('/category','CategoryController@index')->name('category.index')->middleware('auth');
+Route::get('/category/delete/{id}','CategoryController@delete')->name('category.delete')->middleware('auth');
+Route::get('/category/edit/{id}','CategoryController@edit')->name('category.edit')->middleware('auth');
+Route::post('/category/update/{id}','CategoryController@update')->name('category.update')->middleware('auth');
+
+
+
+
+
+
+// for Products I absent in this class this class day......................................!!
+Route::get('/products','ProductController@index')->name('products.index'); //->middleware('auth');
+Route::get('/products/create','ProductController@create')->name('products.create');
+Route::post('/products/store','ProductController@store')->name('products.store');
+Route::get('/products/delete/{id}','ProductController@delete')->name('products.delete');
+Route::get('/products/edit/{id}','ProductController@edit')->name('products.edit');
+Route::post('/products/update/{id}','ProductController@update')->name('products.update');
