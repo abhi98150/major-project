@@ -50,7 +50,7 @@
 
             <a class="collapse-item" href="{{ route('product.index')}}">Products</a>
             <a class="collapse-item" href="{{ route('users.index')}}">Users</a>
-            <a class="collapse-item" href="">Order</a>
+            <a class="collapse-item" href="{{ route('sellers.index')}}">Seller</a>
             <a class="collapse-item" href="">Payments</a>
                    </div>
     </div>
