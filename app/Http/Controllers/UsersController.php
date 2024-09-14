@@ -15,7 +15,7 @@ class UsersController extends Controller
     public function create(){
         return view('users.create');
     }
-
+//...............................store...........................................//
     public function store(Request $request){
         // Validate input data
         $request->validate([
@@ -55,7 +55,7 @@ class UsersController extends Controller
 
         return redirect()->route('users.index')->with('success', 'User registered successfully!');
     }
-
+//...................................................delete.............................................//
     public function delete($id){
         if (!$id) {
             return redirect()->back();
@@ -69,7 +69,7 @@ class UsersController extends Controller
 
         return redirect()->back()->with('error', 'User not found.');
     }
-
+//...............................................edit....................................................//
     public function edit($id){
         if (!$id) {
             return redirect()->back();
@@ -82,7 +82,7 @@ class UsersController extends Controller
 
         return redirect()->back()->with('error', 'User not found.');
     }
-
+//.................................................update...................................................//
     public function update(Request $request, $id){
         if (!$id) {
             return redirect()->back();
