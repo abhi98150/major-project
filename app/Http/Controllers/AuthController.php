@@ -15,7 +15,8 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'role' => 'users'
         ]);
 
         // Check if user exists
@@ -23,7 +24,7 @@ class AuthController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 Auth::login($user);
-                return redirect()->route('users.index');
+                return redirect()->route('test');
             }
             $request->session()->flash('error', 'Check your email and password');
             return redirect()->back();

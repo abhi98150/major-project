@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User; // Ensure correct namespace for User model
+use App\User; // Ensure correct namespace for User model
 
 class UsersController extends Controller
 {
     public function index(){
         $users = User::all();
         return view('users.index', compact('users'));
-    }
+   }
 
     public function create(){
         return view('users.create');

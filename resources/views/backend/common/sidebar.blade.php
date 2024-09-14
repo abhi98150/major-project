@@ -52,20 +52,12 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-light  py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="{{route('products.index')}}">Produncts</a>
-            <a class="collapse-item" href="{{route('users.index')}}">Users</a>
-            <a class="collapse-item" href="{{route('orders.index')}}">Order</a>
-            <a class="collapse-item" href="{{route('payments.index')}}">Payments</a>
-            <a class="collapse-item" href="{{route('details.index')}}">Order_details</a>
-            <a class="collapse-item" href="{{route('wishlists.index')}}">Wishlist</a>
-            <a class="collapse-item" href="{{route('carts.index')}}">Carts Table</a>
-            <a class="collapse-item" href="{{route('carts_details.index')}}">Carts_details Table</a>
-            <a class="collapse-item" href="{{route('category.index')}}">Category Table</a>
-            <a class="collapse-item" href="{{route('backend.index')}}">Sitesettings Table</a>
-        </div>
 
-
-
+            <a class="collapse-item" href="{{ route('users.index')}}">Produncts</a>
+            <a class="collapse-item" href="">Users</a>
+            <a class="collapse-item" href="">Order</a>
+            <a class="collapse-item" href="">Payments</a>
+                   </div>
     </div>
 </li>
 
