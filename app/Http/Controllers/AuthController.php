@@ -15,8 +15,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:6',
-            'role' => 'users'
+            'password' => 'required|min:6'
         ]);
 
         // Check if user exists

@@ -23,7 +23,7 @@ class VendorController extends Controller
             'password' => $request->password,
         ])) {
             // Authentication passed
-            return redirect()->route('vendor.dashboard'); // Redirect to vendor dashboard
+            return redirect()->route('ven'); // Redirect to vendor dashboard
         }
 
         // Authentication failed
@@ -60,7 +60,7 @@ class VendorController extends Controller
         $request->session()->flash('success', 'Account created and logged in successfully.');
 
         // Redirect to the vendor dashboard
-        return redirect()->route('vendor.dashboard');
+        return redirect()->route('ven');
     }
 
     public function logout(Request $request)

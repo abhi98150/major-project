@@ -7,9 +7,6 @@
 </head>
 <body>
     
-
-
-
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
@@ -51,9 +48,9 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
 
-            <a class="collapse-item" href="">Produncts</a>
+            <a class="collapse-item" href="{{ route('product.index')}}">Products</a>
             <a class="collapse-item" href="{{ route('users.index')}}">Users</a>
-            <a class="collapse-item" href="">Order</a>
+            <a class="collapse-item" href="{{ route('sellers.index')}}">Seller</a>
             <a class="collapse-item" href="">Payments</a>
                    </div>
     </div>
@@ -123,13 +120,6 @@
 
 
 </ul>
-
-
-
-
-
-
-
 
 
 </body>
